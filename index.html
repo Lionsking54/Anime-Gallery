@@ -1,311 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anime Gallery Hub</title>
 
-  <title>Anime Wallpaper Hub</title>
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:#0f172a;
+  color:white;
+  text-align:center;
+}
 
-  <style>
+h1{
+  padding:20px;
+}
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:Arial, sans-serif;
-    }
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+  padding:20px;
+}
 
-    body{
-      background:#0f172a;
-      color:white;
-      padding:20px;
-    }
+.card{
+  background:#1e293b;
+  padding:10px;
+  border-radius:12px;
+  opacity:0;
+  transform:translateY(30px);
+  animation:fadeIn 0.8s forwards;
+}
 
-    h1{
-      text-align:center;
-      margin-bottom:40px;
-      font-size:45px;
-    }
+@keyframes fadeIn{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
 
-    h2{
-      margin:40px 0 20px;
-      color:#60a5fa;
-      text-align:center;
-      font-size:35px;
-    }
+.card img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+  border-radius:10px;
+}
 
-    .gallery{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:25px;
-    }
+.title{
+  display:block;
+  margin:10px 0;
+  font-size:22px;
+  color:#60a5fa;
+  cursor:pointer;
+}
 
-    .card{
-      background:#1e293b;
-      border-radius:15px;
-      overflow:hidden;
-      box-shadow:0 0 15px rgba(0,0,0,0.4);
+.title:hover{
+  color:#93c5fd;
+}
 
-      /* Fade In Animation */
-      opacity:0;
-      transform:translateY(40px);
-      animation:fadeIn 1s forwards;
-    }
+.download{
+  display:inline-block;
+  margin-top:8px;
+  padding:8px 14px;
+  background:#ff4d6d;
+  color:white;
+  text-decoration:none;
+  border-radius:8px;
+}
 
-    .card:nth-child(2){
-      animation-delay:0.3s;
-    }
+.download:hover{
+  background:#ff1e4d;
+}
 
-    .card:nth-child(3){
-      animation-delay:0.6s;
-    }
+/* hidden pages */
+.page{
+  display:none;
+  padding:20px;
+}
 
-    @keyframes fadeIn{
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
-    }
-
-    .card img{
-      width:100%;
-      height:350px;
-      object-fit:cover;
-    }
-
-    .content{
-      padding:15px;
-      text-align:center;
-    }
-
-    .anime-title{
-      font-size:25px;
-      color:#60a5fa;
-      cursor:pointer;
-      transition:0.3s;
-      margin-bottom:15px;
-      display:block;
-    }
-
-    .anime-title:hover{
-      color:#93c5fd;
-      transform:scale(1.05);
-    }
-
-    .download-btn{
-      display:inline-block;
-      margin-top:10px;
-      padding:10px 18px;
-      background:#ff4d6d;
-      color:white;
-      text-decoration:none;
-      border-radius:8px;
-      transition:0.3s;
-    }
-
-    .download-btn:hover{
-      background:#ff1e4d;
-    }
-
-    /* Hidden Sections */
-
-    .anime-section{
-      display:none;
-      margin-top:40px;
-    }
-
-    .anime-images{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:20px;
-    }
-
-    .anime-images img{
-      width:100%;
-      height:300px;
-      object-fit:cover;
-      border-radius:12px;
-      transition:0.3s;
-    }
-
-    .anime-images img:hover{
-      transform:scale(1.03);
-    }
-
-    .back-btn{
-      display:block;
-      width:150px;
-      margin:20px auto;
-      text-align:center;
-      padding:12px;
-      background:#2563eb;
-      color:white;
-      text-decoration:none;
-      border-radius:10px;
-    }
-
-  </style>
+.back{
+  display:inline-block;
+  margin:20px;
+  padding:10px 15px;
+  background:#2563eb;
+  color:white;
+  text-decoration:none;
+  border-radius:8px;
+}
+</style>
 </head>
 
 <body>
 
-  <h1>Anime Wallpaper Hub</h1>
+<h1>Anime Wallpaper Hub</h1>
 
-  <!-- MAIN PAGE -->
+<!-- HOME -->
+<div id="home" class="gallery">
 
-  <div id="home" class="gallery">
-
-    <!-- Naruto -->
-    <div class="card">
-
-      <img src="images/naruto.jpg" alt="Naruto">
-
-      <div class="content">
-
-        <span 
-          class="anime-title"
-          onclick="showSection('naruto-section')">
-          Naruto
-        </span>
-
-        <a 
-          href="images/naruto.jpg"
-          download
-          class="download-btn">
-          Download
-        </a>
-
-      </div>
-
-    </div>
-
-    <!-- One Piece -->
-    <div class="card">
-
-      <img src="images/onepiece.jpg" alt="One Piece">
-
-      <div class="content">
-
-        <span 
-          class="anime-title"
-          onclick="showSection('onepiece-section')">
-          One Piece
-        </span>
-
-        <a 
-          href="images/onepiece.jpg"
-          download
-          class="download-btn">
-          Download
-        </a>
-
-      </div>
-
-    </div>
-
-    <!-- Demon Slayer -->
-    <div class="card">
-
-      <img src="images/demonslayer.jpg" alt="Demon Slayer">
-
-      <div class="content">
-
-        <span 
-          class="anime-title"
-          onclick="showSection('demonslayer-section')">
-          Demon Slayer
-        </span>
-
-        <a 
-          href="images/demonslayer.jpg"
-          download
-          class="download-btn">
-          Download
-        </a>
-
-      </div>
-
-    </div>
-
+  <div class="card">
+    <img src="images/naruto.jpg">
+    <span class="title" onclick="openPage('naruto')">Naruto</span>
+    <a class="download" href="images/naruto.jpg" download>Download</a>
   </div>
 
-  <!-- NARUTO SECTION -->
+  <div class="card">
+    <img src="images/onepiece.jpg">
+    <span class="title" onclick="openPage('onepiece')">One Piece</span>
+    <a class="download" href="images/onepiece.jpg" download>Download</a>
+  </div>
 
-  <div id="naruto-section" class="anime-section">
+  <div class="card">
+    <img src="images/demonslayer.jpg">
+    <span class="title" onclick="openPage('demon')">Demon Slayer</span>
+    <a class="download" href="images/demonslayer.jpg" download>Download</a>
+  </div>
 
-    <h2>Naruto Wallpapers</h2>
+</div>
 
-    <div class="anime-images">
+<!-- NARUTO PAGE -->
+<div id="naruto" class="page">
+  <h2>Naruto Wallpapers</h2>
 
+  <div class="gallery">
+
+    <div class="card">
       <img src="images/naruto1.jpg">
+      <a class="download" href="images/naruto1.jpg" download>Download</a>
+    </div>
+
+    <div class="card">
       <img src="images/naruto2.jpg">
+      <a class="download" href="images/naruto2.jpg" download>Download</a>
+    </div>
+
+    <div class="card">
       <img src="images/naruto3.jpg">
-
+      <a class="download" href="images/naruto3.jpg" download>Download</a>
     </div>
-
-    <a href="#" class="back-btn" onclick="goHome()">Back Home</a>
 
   </div>
 
-  <!-- ONE PIECE SECTION -->
+  <a class="back" onclick="goHome()">⬅ Back</a>
+</div>
 
-  <div id="onepiece-section" class="anime-section">
+<!-- ONE PIECE PAGE -->
+<div id="onepiece" class="page">
+  <h2>One Piece Wallpapers</h2>
 
-    <h2>One Piece Wallpapers</h2>
+  <div class="gallery">
 
-    <div class="anime-images">
-
+    <div class="card">
       <img src="images/op1.jpg">
+      <a class="download" href="images/op1.jpg" download>Download</a>
+    </div>
+
+    <div class="card">
       <img src="images/op2.jpg">
+      <a class="download" href="images/op2.jpg" download>Download</a>
+    </div>
+
+    <div class="card">
       <img src="images/op3.jpg">
-
+      <a class="download" href="images/op3.jpg" download>Download</a>
     </div>
-
-    <a href="#" class="back-btn" onclick="goHome()">Back Home</a>
 
   </div>
 
-  <!-- DEMON SLAYER SECTION -->
+  <a class="back" onclick="goHome()">⬅ Back</a>
+</div>
 
-  <div id="demonslayer-section" class="anime-section">
+<!-- DEMON SLAYER PAGE -->
+<div id="demon" class="page">
+  <h2>Demon Slayer Wallpapers</h2>
 
-    <h2>Demon Slayer Wallpapers</h2>
+  <div class="gallery">
 
-    <div class="anime-images">
+    <div class="card">
+      <img src="images/demonslayer.jpg">
+      <a class="download" href="images/demonslayer.jpg" download>Download</a>
+    </div>
 
-      <img src="images/ds1.jpg">
+    <div class="card">
       <img src="images/ds2.jpg">
-      <img src="images/ds3.jpg">
-
+      <a class="download" href="images/ds2.jpg" download>Download</a>
     </div>
 
-    <a href="#" class="back-btn" onclick="goHome()">Back Home</a>
+    <div class="card">
+      <img src="images/ds3.jpg">
+      <a class="download" href="images/ds3.jpg" download>Download</a>
+    </div>
 
   </div>
 
-  <script>
+  <a class="back" onclick="goHome()">⬅ Back</a>
+</div>
 
-    function showSection(sectionId){
+<script>
+function openPage(id){
+  document.getElementById("home").style.display="none";
+  document.querySelectorAll(".page").forEach(p=>p.style.display="none");
+  document.getElementById(id).style.display="block";
+}
 
-      document.getElementById("home").style.display = "none";
-
-      document.querySelectorAll(".anime-section").forEach(section => {
-        section.style.display = "none";
-      });
-
-      document.getElementById(sectionId).style.display = "block";
-    }
-
-    function goHome(){
-
-      document.getElementById("home").style.display = "grid";
-
-      document.querySelectorAll(".anime-section").forEach(section => {
-        section.style.display = "none";
-      });
-    }
-
-  </script>
+function goHome(){
+  document.getElementById("home").style.display="grid";
+  document.querySelectorAll(".page").forEach(p=>p.style.display="none");
+}
+</script>
 
 </body>
 </html>
