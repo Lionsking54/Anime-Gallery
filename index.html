@@ -93,7 +93,9 @@ h1{
 </head>
 
 <body>
-<h1>TEST UPDATE 123</h1>
+<audio id="bgMusic" loop>
+    <source src="music/anime-theme.mp3" type="audio/mp3">
+</audio>
 <h1>Anime Wallpaper Hub</h1>
 
 <!-- HOME -->
@@ -208,6 +210,13 @@ function goHome(){
   document.getElementById("home").style.display="grid";
   document.querySelectorAll(".page").forEach(p=>p.style.display="none");
 }
+
+document.body.addEventListener("click", function(){
+
+    document.getElementById("bgMusic").play();
+
+}, { once:true });
+
 </script>
 
 </body>
